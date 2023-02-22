@@ -21,8 +21,13 @@ const movieList = [
     "description": "Jake Sully and Ney'tiri have formed a family and are doing everything to stay together. However, they must leave their home and explore the regions of Pandora. When an ancient threat resurfaces, Jake must fight a difficult war against the humans."
   }
 ];
-app.get('/api/movie', (req, res) => {
+app.get('/api/movies', (req, res) => {
   res.send(movieList);
+})
+app.get('/api/movie/:id', (req, res) => {
+  const _id = req.params.id;
+  const movie = movieList.find(item => item.id == _id);
+  res.send(movie);
 })
 
 app.listen(port, () => {
